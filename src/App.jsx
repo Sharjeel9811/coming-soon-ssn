@@ -143,11 +143,11 @@ const App = () => {
                   Call +92 334 2388218
                 </a>
                 <a
-                  href='mailto:hr@safeskynexus.com'
+                  href='mailto:info@safeskynexus.com'
                   className='flex items-center gap-3 rounded-full bg-white px-6 py-4 font-semibold text-[#121358] transition hover:bg-gray-100'
                 >
                   <FaEnvelope size={16} />
-                  Email hr@safeskynexus.com
+                  Email info@safeskynexus.com
                 </a>
               </div>
             </motion.div>
