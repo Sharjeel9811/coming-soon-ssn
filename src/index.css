@@ -1,8 +1,10 @@
+
+
 @import "tailwindcss";
 
 * {
   box-sizing: border-box;
-  font-family: 'Jost' ;
+  font-family: 'Inter,system-ui,sans-serif;' ;
 }
 
 html,

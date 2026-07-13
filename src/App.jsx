@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './assets/logo.png'
 import droneImage from './assets/drone1.png'
-import { FaInstagram, FaLinkedinIn, FaMapMarkerAlt } from 'react-icons/fa'
-import { motion } from 'motion/react'
+import video from './assets/WhatsApp Video 2026-06-23 at 12.27.37 PM.mp4'
+import { FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaTimes } from 'react-icons/fa'
+import { motion, AnimatePresence } from 'motion/react'
 
 const App = () => {
+  const [showVideo, setShowVideo] = useState(false)
+
   return (
     <div className='relative h-dvh overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_38%,#fbc79a_78%,#f4954f_100%)] px-4 py-1.5 text-[#121358] sm:px-6 sm:py-2 md:px-8 md:py-3'>
       <div className='mx-auto flex h-full max-w-6xl flex-col'>
@@ -44,24 +47,21 @@ const App = () => {
               providing secure, resilient, and intelligent solutions for modern defense and
               real-world challenges.
             </p>
-
-            <div className='flex gap-2'>
+            <div className='flex gap-3'>
               <a
                 href='https://www.linkedin.com/company/safesky-nexus-private-limited/'
                 target='_blank'
                 rel='noreferrer'
-                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050]'
+                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050]'
               >
                 Contact Us
               </a>
-              <a
-                href='https://www.instagram.com/safeskynexus?igsh=ODEyY2hueHAyZHRp&utm_source=qr'
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center justify-center rounded-full bg-[#f97316] px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c]'
+              <button
+                onClick={() => setShowVideo(true)}
+                className='inline-flex cursor-pointer items-center justify-center rounded-full bg-[#f97316] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c]'
               >
                 Watch Video
-              </a>
+              </button>
             </div>
 
             <div className='flex items-center gap-3 text-[#121358]'>
@@ -86,13 +86,46 @@ const App = () => {
             <motion.img
               src={droneImage}
               alt='Drone'
-              className='h-[38vh] w-auto object-contain drop-shadow-[0_18px_28px_rgba(18,19,88,0.12)] sm:h-[45vh] md:h-[60vh]'
+              className='h-[78vh] w-auto object-contain drop-shadow-[0_18px_28px_rgba(18,19,88,0.12)] sm:h-[55vh] md:h-[72vh]'
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
             />
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showVideo && (
+          <motion.div
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowVideo(false)}
+          >
+            <motion.div
+              className='relative w-[90vw] max-w-3xl'
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowVideo(false)}
+                className='absolute -top-3 -right-3 z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-[#121358] shadow-lg transition hover:bg-gray-100'
+              >
+                <FaTimes size={16} />
+              </button>
+              <video
+                src={video}
+                controls
+                autoPlay
+                className='w-full rounded-xl shadow-2xl'
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
