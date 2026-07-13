@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import logo from './assets/logo.png'
 import droneImage from './assets/drone1.png'
+import { FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaTimes, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 import video from './assets/WhatsApp Video 2026-06-23 at 12.27.37 PM.mp4'
-import { FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaTimes } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'motion/react'
 
 const App = () => {
+  const [showContact, setShowContact] = useState(false)
+  const [showLocation, setShowLocation] = useState(false)
   const [showVideo, setShowVideo] = useState(false)
 
   return (
@@ -40,6 +42,23 @@ const App = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
           >
+            <div className='flex gap-3'>
+              <button
+                type='button'
+                onClick={() => setShowContact(true)}
+                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050]'
+              >
+                Contact Us
+              </button>
+              <button
+                type='button'
+                onClick={() => setShowVideo(true)}
+                className='inline-flex items-center justify-center rounded-full bg-[#f97316] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c]'
+              >
+                Watch Video
+              </button>
+            </div>
+
             <p className='max-w-md text-sm leading-5 text-gray-600 sm:text-[15px] sm:leading-6 md:text-base md:leading-6'>
               Redefining autonomous flight with{' '}
               <span className='font-semibold text-[#121358]'>GPS independent</span>{' '}
@@ -47,27 +66,16 @@ const App = () => {
               providing secure, resilient, and intelligent solutions for modern defense and
               real-world challenges.
             </p>
-            <div className='flex gap-3'>
-              <a
-                href='https://www.linkedin.com/company/safesky-nexus-private-limited/'
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050]'
-              >
-                Contact Us
-              </a>
-              <button
-                onClick={() => setShowVideo(true)}
-                className='inline-flex cursor-pointer items-center justify-center rounded-full bg-[#f97316] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c]'
-              >
-                Watch Video
-              </button>
-            </div>
 
             <div className='flex items-center gap-3 text-[#121358]'>
-              <a href='https://maps.google.com' aria-label='Location' className='transition hover:-translate-y-0.5 hover:text-[#f97316]'>
+              <button
+                type='button'
+                onClick={() => setShowLocation(true)}
+                aria-label='Location'
+                className='transition hover:-translate-y-0.5 hover:text-[#f97316]'
+              >
                 <FaMapMarkerAlt size={18} />
-              </a>
+              </button>
               <a href='https://www.instagram.com/safeskynexus?igsh=ODEyY2hueHAyZHRp&utm_source=qr' aria-label='Instagram' className='transition hover:-translate-y-0.5 hover:text-[#f97316]'>
                 <FaInstagram size={18} />
               </a>
@@ -94,6 +102,104 @@ const App = () => {
         </div>
       </div>
 
+      {/* Contact Us Modal */}
+      <AnimatePresence>
+        {showContact && (
+          <motion.div
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowContact(false)}
+          >
+            <motion.div
+              className='relative w-full max-w-md rounded-3xl bg-[#0d0d10] p-8 text-white shadow-2xl'
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 12 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type='button'
+                onClick={() => setShowContact(false)}
+                aria-label='Close'
+                className='absolute right-6 top-6 text-white/80 transition hover:text-white'
+              >
+                <FaTimes size={20} />
+              </button>
+
+              <h2 className='text-2xl font-extrabold sm:text-3xl'>Contact us</h2>
+              <p className='mt-2 text-sm text-gray-400 sm:text-base'>
+                Choose one of the options below.
+              </p>
+
+              <div className='mt-6 flex flex-col gap-4'>
+                <a
+                  href='tel:+923342388218'
+                  className='flex items-center gap-3 rounded-full bg-white px-6 py-4 font-semibold text-[#121358] transition hover:bg-gray-100'
+                >
+                  <FaPhoneAlt size={16} />
+                  Call +92 334 2388218
+                </a>
+                <a
+                  href='mailto:hr@safeskynexus.com'
+                  className='flex items-center gap-3 rounded-full bg-white px-6 py-4 font-semibold text-[#121358] transition hover:bg-gray-100'
+                >
+                  <FaEnvelope size={16} />
+                  Email hr@safeskynexus.com
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Location Modal */}
+      <AnimatePresence>
+        {showLocation && (
+          <motion.div
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowLocation(false)}
+          >
+            <motion.div
+              className='relative w-full max-w-md rounded-3xl bg-[#0d0d10] p-8 text-white shadow-2xl'
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 12 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type='button'
+                onClick={() => setShowLocation(false)}
+                aria-label='Close'
+                className='absolute right-6 top-6 text-white/80 transition hover:text-white'
+              >
+                <FaTimes size={20} />
+              </button>
+
+              <h2 className='text-2xl font-extrabold sm:text-3xl'>Our Location</h2>
+              <p className='mt-2 text-sm text-gray-400 sm:text-base'>Visit us at:</p>
+
+              <div className='mt-6'>
+                
+                <a  href='https://maps.google.com/?q=Alpha+Square,+NICAT,+NASTP,+Rawalpindi,+Pakistan'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='block rounded-full bg-white px-6 py-4 text-center font-semibold text-[#121358] transition hover:bg-gray-100'
+                >
+                  Alpha Square, NICAT, NASTP, Rawalpindi, Pakistan
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Video Modal */}
       <AnimatePresence>
         {showVideo && (
           <motion.div
@@ -111,6 +217,7 @@ const App = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                type='button'
                 onClick={() => setShowVideo(false)}
                 className='absolute -top-3 -right-3 z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-[#121358] shadow-lg transition hover:bg-gray-100'
               >
