@@ -11,13 +11,13 @@ const App = () => {
   const [showVideo, setShowVideo] = useState(false)
 
   return (
-    <div className='relative h-dvh overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_38%,#fbc79a_78%,#f4954f_100%)] px-4 py-1.5 text-[#121358] sm:px-6 sm:py-2 md:px-8 md:py-3'>
-      <div className='mx-auto flex h-full max-w-6xl flex-col'>
+    <div className='relative min-h-dvh overflow-x-hidden bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_38%,#fbc79a_78%,#f4954f_100%)] px-4 py-3 text-[#121358] sm:px-6 sm:py-4 md:h-dvh md:overflow-hidden md:px-8 md:py-3'>
+      <div className='mx-auto flex min-h-dvh max-w-6xl flex-col md:h-full'>
         <div className='self-start'>
           <motion.img
             src={logo}
             alt='Safe Sky Nexus Logo'
-            className='h-12 w-auto object-contain sm:h-14 md:h-16'
+            className='h-10 w-auto object-contain sm:h-12 md:h-16'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -25,7 +25,7 @@ const App = () => {
         </div>
 
         <motion.h1
-          className='text-center text-[2rem] font-extrabold leading-[0.9] tracking-tight sm:text-[2.8rem] md:text-[3.5rem]'
+          className='mt-2 text-center text-[1.75rem] font-extrabold leading-[0.9] tracking-tight sm:text-[2.2rem] md:mt-0 md:text-[3.5rem]'
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.08 }}
@@ -35,14 +35,14 @@ const App = () => {
           <span className='block text-[#f97316] md:inline'>Soon</span>
         </motion.h1>
 
-        <div className='grid flex-1 items-center gap-1 md:grid-cols-[1fr_1.1fr] md:gap-4'>
+        <div className='grid flex-1 items-center gap-4 sm:gap-6 md:grid-cols-[1fr_1.1fr] md:gap-4'>
           <motion.div
-            className='flex flex-col items-center gap-1.5 text-center md:items-start md:text-left'
+            className='flex flex-col items-center gap-3 text-center sm:gap-4 md:items-start md:text-left'
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
           >
-            <p className='max-w-md text-sm leading-5 text-gray-600 sm:text-[15px] sm:leading-6 md:text-base md:leading-6'>
+            <p className='max-w-md text-xs leading-5 text-gray-600 sm:text-sm sm:leading-6 md:text-base md:leading-6'>
               Redefining autonomous flight with{' '}
               <span className='font-semibold text-[#121358]'>GPS independent</span>{' '}
               drone technology. Our vision based drones navigate where conventional systems fail,
@@ -50,24 +50,24 @@ const App = () => {
               real-world challenges.
             </p>
 
-            <div className='flex gap-3'>
+            <div className='flex flex-col gap-2.5 sm:flex-row sm:gap-3'>
               <button
                 type='button'
                 onClick={() => setShowContact(true)}
-                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050]'
+                className='inline-flex items-center justify-center rounded-full bg-[#121358] px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f1050] sm:px-7 sm:py-3 sm:text-base'
               >
                 Contact Us
               </button>
               <button
                 type='button'
                 onClick={() => setShowVideo(true)}
-                className='inline-flex items-center justify-center rounded-full bg-[#f97316] px-7 py-3 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c]'
+                className='inline-flex items-center justify-center rounded-full bg-[#f97316] px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#ea580c] sm:px-7 sm:py-3 sm:text-base'
               >
                 Watch Video
               </button>
             </div>
 
-            <div className='flex items-center gap-3 text-[#121358]'>
+            <div className='flex items-center gap-4 text-[#121358]'>
               <button
                 type='button'
                 onClick={() => setShowLocation(true)}
@@ -86,7 +86,7 @@ const App = () => {
           </motion.div>
 
           <motion.div
-            className='flex justify-center md:justify-end'
+            className='flex justify-center pb-6 sm:pb-8 md:justify-end md:pb-0'
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.75, ease: 'easeOut', delay: 0.24 }}
@@ -94,7 +94,7 @@ const App = () => {
             <motion.img
               src={droneImage}
               alt='Drone'
-              className='h-[78vh] w-auto object-contain drop-shadow-[0_18px_28px_rgba(18,19,88,0.12)] sm:h-[55vh] md:h-[72vh]'
+              className='h-[30vh] w-auto object-contain drop-shadow-[0_18px_28px_rgba(18,19,88,0.12)] sm:h-[35vh] md:h-[72vh]'
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
             />
@@ -113,7 +113,7 @@ const App = () => {
             onClick={() => setShowContact(false)}
           >
             <motion.div
-              className='relative w-full max-w-md rounded-3xl bg-[#121358] p-8 text-white shadow-2xl'
+              className='relative w-full max-w-md rounded-2xl bg-[#121358] p-6 text-white shadow-2xl sm:rounded-3xl sm:p-8'
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 12 }}
@@ -166,7 +166,7 @@ const App = () => {
             onClick={() => setShowLocation(false)}
           >
             <motion.div
-              className='relative w-full max-w-md rounded-3xl bg-[#121358] p-8 text-white shadow-2xl'
+              className='relative w-full max-w-md rounded-2xl bg-[#121358] p-6 text-white shadow-2xl sm:rounded-3xl sm:p-8'
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 12 }}
