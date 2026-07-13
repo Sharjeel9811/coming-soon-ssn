@@ -42,6 +42,14 @@ const App = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.16 }}
           >
+            <p className='max-w-md text-sm leading-5 text-gray-600 sm:text-[15px] sm:leading-6 md:text-base md:leading-6'>
+              Redefining autonomous flight with{' '}
+              <span className='font-semibold text-[#121358]'>GPS independent</span>{' '}
+              drone technology. Our vision based drones navigate where conventional systems fail,
+              providing secure, resilient, and intelligent solutions for modern defense and
+              real-world challenges.
+            </p>
+
             <div className='flex gap-3'>
               <button
                 type='button'
@@ -58,14 +66,6 @@ const App = () => {
                 Watch Video
               </button>
             </div>
-
-            <p className='max-w-md text-sm leading-5 text-gray-600 sm:text-[15px] sm:leading-6 md:text-base md:leading-6'>
-              Redefining autonomous flight with{' '}
-              <span className='font-semibold text-[#121358]'>GPS independent</span>{' '}
-              drone technology. Our vision based drones navigate where conventional systems fail,
-              providing secure, resilient, and intelligent solutions for modern defense and
-              real-world challenges.
-            </p>
 
             <div className='flex items-center gap-3 text-[#121358]'>
               <button
@@ -113,7 +113,7 @@ const App = () => {
             onClick={() => setShowContact(false)}
           >
             <motion.div
-              className='relative w-full max-w-md rounded-3xl bg-[#0d0d10] p-8 text-white shadow-2xl'
+              className='relative w-full max-w-md rounded-3xl bg-[#121358] p-8 text-white shadow-2xl'
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 12 }}
@@ -166,7 +166,7 @@ const App = () => {
             onClick={() => setShowLocation(false)}
           >
             <motion.div
-              className='relative w-full max-w-md rounded-3xl bg-[#0d0d10] p-8 text-white shadow-2xl'
+              className='relative w-full max-w-md rounded-3xl bg-[#121358] p-8 text-white shadow-2xl'
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 12 }}
